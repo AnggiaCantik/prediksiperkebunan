@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Input</title>
+    <!-- Tambahkan link Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Menambahkan gaya khusus untuk halaman */
+        body {
+            font-family: 'Poppins'; /* Menggunakan font Poppins untuk kesan elegan */
+        }
+        .hero-text {
+            font-family: 'Playfair Display', serif; /* Menggunakan font Playfair Display untuk judul */
+        }
+        .checkmark {
+            content: "\\2713"; /* Kode unicode untuk centang */
+            color: green; /* Warna centang */
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .btn-custom {
+        display: inline-block;
+        width: auto; /* Make sure buttons don't stretch to full width */
+        min-width: 150px; /* Set a minimum width for the buttons */
+        text-align: center; /* Center the text */    
+    }
+    </style>
+    
+</head>
+
+
+<body>
+<!-- Headerr -->
+<object type="text/html" data="header.html" style="width:100%;"></object>
+<section class="mx-auto container">
+    <div class="mx-auto p-6 rounded-lg text-center flex flex-col items-center ">
+        <h1 class="hero-text text-black text-4xl lg:text-7xl font-bold mt-8">Selamat datang di platform kami!</h1>
+        <p class="text-gray-800 text-lg mt-4 max-w-2xl py-8">Temukan prediksi terkini untuk nilai harga dan volume produksi dalam industri perkebunan untuk membantu Anda mengambil keputusan yang lebih cerdas dan tepat waktu.</p>
+        <div class="py-16 max-w-2xl">
+            <a href="/history" class="bg-black text-white font-bold py-2 px-4 block w-full text-center">View History Ekspor</a>
+        </div>
+    </div>
+</section>
+
+
+<section class="mx-auto container flex justify-center items-center  bg-gray-100">
+    <!-- Konten Prediksi -->
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">MASUKAN DATA PREDIKSI YANG DIINGINKAN</h1>
+        <form action="/predict" method="POST" class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+            <!-- Isi formulir sesuai dengan input yang diperlukan -->
+            <div class="mb-4">
+                <label for="komoditas" class="block text-sm font-semibold mb-1">Komoditas:</label>
+                <input type="text" id="komoditas" name="komoditas" required
+                    class="form-input w-full border-gray-300 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+            </div>
+
+            <div class="mb-4">
+                <label for="volume" class="block text-sm font-semibold mb-1">Volume:</label>
+                <input type="number" id="volume" name="volume" min="1" required
+                    class="form-input w-full border-gray-300 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+            </div>
+
+
+            <div class="mb-4">
+                <label for="bulan" class="block text-sm font-semibold mb-1">Bulan:</label>
+                <select id="bulan" name="bulan" required
+                    class="form-select w-full border-gray-300 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+                    <option value="1">Januari</option>
+                    <option value="2">Februari</option>
+                    <option value="3">Maret</option>
+                    <option value="4">April</option>
+                    <option value="5">Mei</option>
+                    <option value="6">Juni</option>
+                    <option value="7">Juli</option>
+                    <option value="8">Agustus</option>
+                    <option value="9">September</option>
+                    <option value="10">Oktober</option>
+                    <option value="11">November</option>
+                    <option value="12">Desember</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="tahun" class="block text-sm font-semibold mb-1">Tahun:</label>
+                <select id="tahun" name="tahun" required
+                    class="form-select w-full border-gray-300 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50">
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                </select>
+            </div>
+
+            <button type="submit"
+                class="bg-black hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-500 w-full">Prediksi</button>
+        </form>
+    </div>
+
+    <div class="container mx-auto ">
+        <img src="/static/sawi.jpg" alt="Deskripsi Gambar" class="mx-auto max-w-full max-h-full mt-8 rounded-lg shadow-lg object-cover h-full">
+    </div>
+</section>
+
+
+<section> <!-- Konten Grafik -->
+    <div class="container mx-auto py-16 text-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+            <div class="px-6">
+                <h2 class="text-lg font-semibold m-4">GRAFIK REGRESI</h2>
+                <p class="text-gray-800 text-lg py-4">Grafik regresi adalah representasi visual dari hubungan antara dua atau lebih variabel di dalam data. Tujuan utama dari grafik regresi adalah untuk menunjukkan pola atau tren dalam data dan memprediksi nilai variabel dependen berdasarkan variabel independen. Grafik ini sering digunakan dalam analisis statistik dan machine learning untuk memahami hubungan antara variabel.</p>
+                <!-- Tombol pertama -->
+                <a href="linear_regression.html" class="btn btn-custom bg-black text-white px-6 py-2 inline-block">Prediksi Regresi</a>
+            </div>
+            <div class="px-6">
+                <h2 class="text-lg font-semibold m-4">GRAFIK HASIL PREDIKSI</h2>
+                <p class="text-gray-800 text-lg py-4">Dalam grafik hasil prediksi, sumbu x ini biasanya mewakili nilai sebenarnya atau data yang diamati, sedangkan sumbu y mewakili nilai prediksi dari model atau metode yang digunakan. Garis ideal dalam grafik ini adalah garis diagonal dimana setiap titik pada grafik berada sepanjang garis tersebut, menunjukkan bahwa prediksi yang sempurna (nilai prediksi = nilai sebenarnya).</p>
+                <!-- Tombol kedua -->
+                <a href="grafikharga.html" class="btn btn-custom bg-black text-white px-6 py-2 inline-block">Grafik Prediksi</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section> <!-- About -->
+    <!-- Konten tentang perkebunan-->
+    <div class="mx-auto max-w-2xl p-6 rounded-lg text-center">
+        <h1 class="hero-text text-black text-2xl lg:text-4xl font-bold mt-4">Perkebunan</h1>
+        <p class="text-gray-800 text-lg mt-4">Perkebunan adalah suatu area lahan yang ditanami dengan tanaman tertentu secara intensif untuk tujuan komersial. Perkebunan dapat berupa perkebunan besar yang dikelola secara industri maupun perkebunan kecil milik petani. Selain tanaman, perkebunan juga biasanya memiliki fasilitas seperti pabrik pengolahan atau fasilitas lainnya tergantung pada jenis tanaman yang ditanam.</p>
+    </div>
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+            <!-- Bagian Pertama -->
+            <div class="py-4">
+                <h2 class="text-lg font-semibold m-4">Komoditas Semusim</h2>
+                <ul class="list-disc ml-8">
+                    <li class="mb-2"><span class="checkmark"></span>Adas Manis</li>
+                    <li class="mb-2"><span class="checkmark"></span>Asam</li>
+                    <li class="mb-2"><span class="checkmark"></span>Biji Wijen</li>
+                    <li class="mb-2"><span class="checkmark"></span>Cengkeh</li>
+                    <li class="mb-2"><span class="checkmark"></span>Gingseng</li>
+                    <li class="mb-2"><span class="checkmark"></span>Jintan</li>
+                    <li class="mb-2"><span class="checkmark"></span>Kakao</li>
+                    <li class="mb-2"><span class="checkmark"></span>Karet</li>
+                    <li class="mb-2"><span class="checkmark"></span>Kelapa</li>
+                    <li class="mb-2"><span class="checkmark"></span>Kopi</li>
+                    <li class="mb-2"><span class="checkmark"></span>Lada</li>
+                    <li class="mb-2"><span class="checkmark"></span>Pala</li>
+                    <li class="mb-2"><span class="checkmark"></span>Panili</li>
+                    <li class="mb-2"><span class="checkmark"></span>Pinang</li>
+                    <li class="mb-2"><span class="checkmark"></span>Tembakau</li>
+                    <!-- Tambahkan komoditas lainnya di sini -->
+                </ul>
+            </div>
+    
+            <!-- Bagian Kedua -->
+            <div class="py-4">
+                <h2 class="text-lg font-semibold m-4">Komoditas Tahunan</h2>
+                <ul class="list-disc ml-8">
+                    <li class="mb-2"><span class="checkmark"></span>Benih Tanaman Perkebunan</li>
+                    <li class="mb-2"><span class="checkmark"></span>Kacang Makademia</li>
+                    <li class="mb-2"><span class="checkmark"></span>Kacang Mede</li>
+                    <li class="mb-2"><span class="checkmark"></span>Kapas</li>
+                    <li class="mb-2"><span class="checkmark"></span>Kapuk</li>
+                    <li class="mb-2"><span class="checkmark"></span>Kayu Manis</li>
+                    <li class="mb-2"><span class="checkmark"></span>Kelapa Sawit</li>
+                    <li class="mb-2"><span class="checkmark"></span>Kemiri</li>
+                    <li class="mb-2"><span class="checkmark"></span>Ketumbar</li>
+                    <li class="mb-2"><span class="checkmark"></span>Rami</li>
+                    <li class="mb-2"><span class="checkmark"></span>Serat</li>
+                    <li class="mb-2"><span class="checkmark"></span>Teh</li> 
+                    <li class="mb-2"><span class="checkmark"></span>Tebu</li>
+                    <li class="mb-2"><span class="checkmark"></span>Zaitun</li> 
+                    <!-- Tambahkan komoditas lainnya di sini -->
+                </ul>
+            </div>
+    
+            <!-- Bagian Ketiga -->
+            <div class="p-4">
+                <div class="grid grid-cols-1 gap-4">
+                    <img src="/static/pisang.jpg" alt="Gambar Kelapa" class="mx-auto max-w-full max-h-full mt-8 rounded-lg shadow-lg object-cover h-full">
+                    <img src="/static/teh (4).jpg" alt="Gambar Teh" class="mx-auto max-w-full max-h-full mt-8 rounded-lg shadow-lg object-cover h-full">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- grafik-->
+</div>
+<div class="mx-auto max-w-2xl p-6 rounded-lg text-center">
+    <h1 class="hero-text text-black text-2xl lg:text-4xl font-bold mt-4">TANAMAN TAHUNAN</h1>
+    <p class="text-gray-800 text-lg mt-4">Tanaman perkebunan musiman adalah tanaman yang ditanam dan dipanen dalam satu musim pertumbuhan tanaman. Mereka memiliki siklus hidup yang relatif singkat, biasanya sekitar enam bulan hingga satu tahun, tergantung pada spesiesnya. Setelah masa tanam yang relatif singkat, tanaman ini siap dipanen untuk dijual atau digunakan untuk konsumsi.</p>
+</div>
+<div class="mx-auto container">
+    <img src="/static/teh.jpg" alt="Gambar teh" class="mx-auto max-w-full max-h-full mt-8 rounded-lg shadow-lg object-cover h-full">
+</div>
+<div class="mx-auto max-w-2xl p-6 rounded-lg text-center">
+    <h1 class="hero-text text-black text-2xl lg:text-4xl font-bold mt-4">TANAMAN SEMUSIM</h1>
+    <p class="text-gray-800 text-lg mt-4">Tanaman perkebunan tahunan adalah tanaman yang memiliki siklus hidup lebih dari satu tahun dan memerlukan waktu lebih lama untuk tumbuh, berkembang, dan menghasilkan hasil yang siap panen. Ini berbeda dengan tanaman perkebunan semusim yang hanya hidup dalam satu musim pertumbuhan.</p>
+</div>
+<div class="mx-auto container">
+    <img src="/static/kelapa.jpg" alt="Gambar Kelapa" class="mx-auto max-w-full max-h-full mt-8 rounded-lg shadow-lg object-cover h-full">
+</div>
+</section>
+<!-- Footer -->
+<object type="text/html" data="footer.html" style="width:100%;"></object>
+</body>
+
+</html>

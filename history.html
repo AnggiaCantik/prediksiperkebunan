@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <!-- Tambahkan link ke CDN Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Tambahkan CSS untuk huruf besar */
+        .uppercase-text {
+            text-transform: uppercase;
+        }
+        /* Tambahkan CSS untuk garis hitam pada tabel */
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid black;
+        }
+        .table-bordered {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        /* Custom styles for making the table responsive */
+        .table-responsive {
+            display: flex;
+            flex-direction: column;
+        }
+        .table-responsive .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .table-responsive .cell {
+            flex: 1;
+            min-width: 150px;
+            border: 1px solid black;
+            padding: 0.5rem;
+            font-family: 'Times New Roman', Times, serif; /* Font serif untuk tampilan formal */
+        }
+        .table-responsive .header {
+            font-weight: bold;
+            background-color: hwb(222 68% 22%); /* Tailwind's gray-200 */
+            border: 1px solid black;
+            font-family: 'Times New Roman', Times, serif; /* Font serif untuk tampilan formal */
+        }
+        /* Desain latar belakang dan warna teks */
+        body {
+            background-color: #fff; /* Putih untuk latar belakang */
+            color: #000; /* Hitam untuk teks */
+            font-family: 'Times New Roman', Times, serif; /* Font serif untuk kesan formal */
+        }
+    </style>
+</head>
+
+<body class="bg-white text-black">
+    <object type="text/html" data="header.html" style="width:100%;"></object>
+    <div class="container mx-auto px-4">
+        <h1 class="text-3xl font-semibold font-serif text-center py-16">History Negara Yang Terlibat</h1>
+        <div class="table-responsive ">
+            <div class="row header">
+                <div class="cell uppercase-text">Negara</div>
+                <div class="cell uppercase-text">Komoditas</div>
+            </div>
+            {% for country in data['countries'] %}
+            <div class="row">
+                <div class="cell uppercase-text">{{ country['negara'] }}</div>
+                <div class="cell uppercase-text">{{ country['komoditas'] }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <object type="text/html" data="footer.html" style="width:100%;"></object>
+</body>
+
+</html>

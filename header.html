@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman dengan Tailwind CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('path_to_your_montserrat_font/Montserrat-Regular.ttf') format('truetype'); /* Sesuaikan path dengan lokasi font Anda */
+            /* Tambahkan format dan style lainnya jika diperlukan (bold, italic, dll.) */
+        }
+
+        /* Gunakan font Montserrat sebagai font default */
+        html {
+            font-family: 'Poppins';
+        }
+    </style>
+</head>
+
+<body>
+    <header class="py-4 px-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold ">PREDIKSI EKSPOR</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:text-gray-600 font-semibold uppercase">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+
+</html>

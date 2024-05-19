@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Harga Komoditas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="text-white">
+    <h1 class="text-center text-black text-3xl mt-8">Prediksi Harga Komoditas Menggunakan Grafik</h1>
+    <form method="POST" class="max-w-md mx-auto p-6 mt-10 border">
+        <div class="mb-4 text-black">
+            <label for="komoditas" class="block mb-2">Komoditas:</label>
+            <input type="text" id="komoditas" name="komoditas" required class="w-full p-2 border border-black rounded">
+        </div>
+        <div class="mb-4 text-black">
+            <label for="negara" class="block mb-2">Negara:</label>
+            <input type="text" id="negara" name="negara" required class="w-full p-2 border border-black rounded">
+        </div>
+        <button type="submit" class="w-full py-2 bg-black hover:bg-gray-600 text-white">Prediksi</button>
+    </form>
+    {% if graph %}
+        <h2 class="text-center text-2xl mt-10">Grafik Harga Prediksi</h2>
+        <img src="{{ url_for('static', filename='graph.png') }}" alt="Grafik Harga Prediksi" class="block mx-auto mt-4 max-w-full">
+    {% elif error %}
+        <p class="text-center text-white mt-4">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

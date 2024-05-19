@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Harga dengan Regresi Linear</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="min-h-screen flex flex-col justify-center">
+    <object type="text/html" data="header.html" style="width:100%; height:100%;"></object>
+    <div class="flex container mx-auto py-40">
+        <div class="p-8 rounded-lg max-w-md w-full items-center justify-center">
+            <h1 class="text-3xl font-bold mb-4 text-center">Prediksi Harga dengan Regresi Linear</h1>
+            <form id="prediksi-form" action="/" method="POST">
+                <div class="mb-4">
+                    <label for="negara" class="block text-sm font-semibold mb-1">Negara:</label>
+                    <input type="text" id="negara" name="negara" required
+                        class="w-full p-2 border border-black rounded">
+                </div>
+
+                <div class="mb-4">
+                    <label for="komoditas" class="block text-sm font-semibold mb-1">Komoditas:</label>
+                    <input type="text" id="komoditas" name="komoditas" required
+                        class="w-full p-2 border border-black rounded">
+                </div>
+
+                <button type="submit"
+                    class="bg-black hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring focus:ring-blue-500 w-full">Prediksi</button>
+            </form>
+        </div>
+
+        <div id="hasil-prediksi" class="hidden mx-auto bg-white py-8 px-6 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold py text-center">Hasil Prediksi Harga</h1>
+            <h2 id="equation" class="text-lg font-semibold mb-4 text-center"></h2>
+            <img id="graph-image" src="" alt="Grafik Regresi Linear" class="mx-auto py-8 px-8 hidden">
+            <p class="text-sm text-center">Grafik di atas adalah visualisasi dari regresi linear yang digunakan untuk prediksi harga.</p>
+        </div>
+    </div>
+
+    <object type="text/html" data="footer.html" style="width:100%; height:100%;"></object>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('prediksi-form');
+            form.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const formData = new FormData(form);
+                const response = await fetch('/', {
+                    method: 'POST',
+                    body: formData
+                });
+                const responseData = await response.json();
+
+                if (responseData.equation && responseData.graph_url) {
+                    document.getElementById('hasil-prediksi').classList.remove('hidden');
+                    document.getElementById('equation').textContent = responseData.equation;
+                    const graphImage = document.getElementById('graph-image');
+                    graphImage.src = `data:image/png;base64,${responseData.graph_url}`;
+                    graphImage.classList.remove('hidden');
+                } else if (responseData.error) {
+                    alert(responseData.error);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
